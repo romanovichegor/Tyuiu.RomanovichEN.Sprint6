@@ -35,5 +35,10 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task0.V21
                 MessageBox.Show("Введены неверные данные!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Таск 0 выполнил студент группы ПКТб-25-1 Романович Егор Николаевич", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

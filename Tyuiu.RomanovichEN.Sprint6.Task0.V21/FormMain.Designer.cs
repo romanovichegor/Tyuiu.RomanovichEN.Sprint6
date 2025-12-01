@@ -167,6 +167,7 @@
             buttonHelp.TabIndex = 7;
             buttonHelp.Text = "?";
             buttonHelp.UseVisualStyleBackColor = true;
+            buttonHelp.Click += buttonHelp_Click;
             // 
             // buttonDone
             // 
