@@ -5,13 +5,12 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task3.V20.Lib
     {
         public int[,] Calculate(int[,] array)
         {
-            int rows = array.GetUpperBound(0) + 1;
-            int columns = array.GetUpperBound(1) + 1;
+            int columns = array.GetUpperBound(1)+ 1;
             for (int j = 0; j < columns; j++)
             {
-                if (array[5, j] % 2 == 0)
+                if (array[4, j] % 2 == 0)
                 {
-                    array[5, j] = 0;
+                    array[4, j] = 0;
                 }
             }
             return array;

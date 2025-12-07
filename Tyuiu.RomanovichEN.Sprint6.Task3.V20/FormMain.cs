@@ -29,37 +29,47 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task3.V20
                 }
             }
         }
-private void buttonDone_REN_Click(object sender, EventArgs e)
+        private void buttonDone_REN_Click(object sender, EventArgs e)
         {
-           
-            int rows = array.GetUpperBound(0) + 1;
-            int columns = array.GetUpperBound(1) + 1;
-            for (int i = 0; i < rows; i++)
+            try
             {
-                for (int j = 0; j < columns; j++)
-                {
-                    array[i, j] = ds.Calculate(array)[i, j];
-                }
+                int[,] calculatedArray = ds.Calculate(array);
+                DisplayArray(dataGridViewResult_REN, calculatedArray);
             }
-            dataGridViewResult_REN.ColumnCount = columns;
-            dataGridViewResult_REN.RowCount = rows;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при расчёте: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void DisplayArray(DataGridView dgv, int[,] data)
+        {
+            if (data == null || data.Length == 0)
+            {
+                dgv.RowCount = 0;
+                dgv.ColumnCount = 0;
+                return;
+            }
+
+            int rows = data.GetUpperBound(0) + 1;
+            int columns = data.GetUpperBound(1) + 1;
+
+            dgv.ColumnCount = columns;
+            dgv.RowCount = rows;
+
             for (int i = 0; i < columns; i++)
             {
-                if (dataGridViewResult_REN.Columns[i] == null)
-                {
-                    dataGridViewResult_REN.Columns.Add(new DataGridViewColumn());
-                }
-                dataGridViewResult_REN.Columns[i].Width = 25;
+                dgv.Columns[i].Width = 25;
             }
+
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    dataGridViewResult_REN.Rows[i].Cells[j].Value = array[i, j].ToString();
+                    dgv.Rows[i].Cells[j].Value = data[i, j].ToString();
                 }
             }
         }
-
         private void buttonHelp_REN_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Задание выполнил студент группы ПКТб-25-1 Романович Егор Николаевич", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Question);

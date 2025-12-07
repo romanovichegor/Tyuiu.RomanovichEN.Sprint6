@@ -97,9 +97,11 @@
             // dataGridViewResult_REN
             // 
             dataGridViewResult_REN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewResult_REN.Location = new Point(6, 108);
+            dataGridViewResult_REN.ColumnHeadersVisible = false;
+            dataGridViewResult_REN.Location = new Point(0, 99);
             dataGridViewResult_REN.Name = "dataGridViewResult_REN";
-            dataGridViewResult_REN.Size = new Size(240, 150);
+            dataGridViewResult_REN.RowHeadersVisible = false;
+            dataGridViewResult_REN.Size = new Size(140, 137);
             dataGridViewResult_REN.TabIndex = 3;
             // 
             // buttonDone_REN
