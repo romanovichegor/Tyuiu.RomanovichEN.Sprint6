@@ -19,10 +19,11 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task4.V3
                 double[] array = new double[len];
                 array = ds.GetMassFunction(start, stop);
                 textBoxResult_REN.Text = "";
-                for (int i = 0; i < len; i++)
+                for (int i = 0; i <= len -1; i++)
                 {
                     textBoxResult_REN.AppendText(array[i] + Environment.NewLine);
                 }
+
             }
             catch
             {
@@ -34,7 +35,7 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task4.V3
         {
             string pathout = Path.Combine(Path.GetTempPath(), "OutPutFileTask4V3.txt");
             File.WriteAllText(pathout, textBoxResult_REN.Text);
-            DialogResult dialogResult = MessageBox.Show("Файл" + pathout + "сохранен успешно!\n Открыть его?");
+            DialogResult dialogResult = MessageBox.Show("Файл" + pathout + "сохранен успешно!\n Открыть его?", "Сообщение",MessageBoxButtons.YesNo, MessageBoxIcon.Information );
             if (dialogResult == DialogResult.Yes)
             {
                 System.Diagnostics.Process txt = new System.Diagnostics.Process();
