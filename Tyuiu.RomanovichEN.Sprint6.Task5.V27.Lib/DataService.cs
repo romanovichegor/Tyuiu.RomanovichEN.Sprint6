@@ -5,19 +5,27 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task5.V27.Lib
     {
         public double[] LoadFromDataFile(string path)
         {
-            double[] res = null;
             string strx = File.ReadAllText(path);
-            strx = strx.Replace('.', ',');
-            string[] strings = strx.Split(' ');
+            strx = strx.Replace('.', ','); 
+
+            string[] strings = strx.Split(new char[] { ' ', '\t', '\r', '\n' },
+                                         StringSplitOptions.RemoveEmptyEntries);
+
+            List<double> resultList = new List<double>();
+
             foreach (string s in strings)
             {
-                double x = Math.Round(double.Parse(s),3);
-                if (x % 5 != 0)
+                if (double.TryParse(s, out double x))
                 {
-                    res.Append(x);
+                    if ((x % 5) != 0)
+                    {
+                        resultList.Add(x); 
+                    }
                 }
+                
             }
-            return res;
+
+            return resultList.ToArray();
         }
     }
 }
