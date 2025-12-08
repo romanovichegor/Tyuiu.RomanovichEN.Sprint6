@@ -27,7 +27,7 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task7.V15.Lib
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    if (arrayValues[i, 6] <10 && arrayValues[4, j]% 3 ==0)
+                    if (arrayValues[i, 6] <10 && arrayValues[6, j]% 3 ==0)
                     {
                         arrayValues[i, 6] = 3;
                     }
