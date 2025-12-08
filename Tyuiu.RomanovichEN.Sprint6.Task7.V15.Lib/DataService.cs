@@ -5,43 +5,35 @@ namespace Tyuiu.RomanovichEN.Sprint6.Task7.V15.Lib
     {
         public int[,] GetMatrix(string path)
         {
-            string[] lines = File.ReadAllLines(path);
-            int rowCount = lines.Length;
-            int colCount = 0;
-            for (int i = 0; i < rowCount; i++)
-            {
-                if (!string.IsNullOrWhiteSpace(lines[i]))
-                {
-                    colCount = lines[i].Split(',').Length;
-                    break;
-                }
-            }
-            int[,] matrix = new int[rowCount, colCount];
-            for (int row = 0; row < rowCount; row++)
-            {
-                string[] parts = lines[row].Split(',');
+            string fileData = File.ReadAllText(path);
+            fileData = fileData.Replace('\n', '\r');
+            string[] lines = fileData.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
-                for (int col = 0; col < colCount; col++)
+
+            int rows = lines.Length;
+            int columns = lines[0].Split(';').Length;
+            int[,] arrayValues = new int[rows, columns];
+
+            for (int i = 0; i < rows; i++)
+            {
+                string[] line_r = lines[i].Split(';');
+                for (int j = 0; j < columns; j++)
                 {
-                    if (col < parts.Length && int.TryParse(parts[col], out int value))
-                    {
-                        if (col == 6 && value < 10 && value % 3 == 0)
-                        {
-                            matrix[row, col] = 3;
-                        }
-                        else
-                        {
-                            matrix[row, col] = value;
-                        }
-                    }
-                    else
-                    {
-                        matrix[row, col] = 0;
-                    }
+                    arrayValues[i, j] = Convert.ToInt32(line_r[j]);
                 }
             }
 
-            return matrix;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (arrayValues[i, 6] <10 && arrayValues[4, j]% 3 ==0)
+                    {
+                        arrayValues[i, 6] = 3;
+                    }
+                }
+            }
+            return arrayValues;
         }
     }
 }
